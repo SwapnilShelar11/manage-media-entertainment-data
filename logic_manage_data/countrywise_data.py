@@ -1,6 +1,9 @@
 from pyspark.sql.functions import col, split ,round
 
-def country_data_manage(netflix_df,write_path):
+from start_manage_data.main import write_path
+
+
+def country_data_manage(netflix_df):
     result_country_df=netflix_df.filter((col("country") != "No Data")) \
         .groupBy(split(col("country"), ",")[0].alias("country_name")).count() \
         .withColumn("percentage", round((col("count") / netflix_df.count()) * 100, 2)) \
@@ -26,6 +29,7 @@ def country_data_manage(netflix_df,write_path):
         .csv(f"{write_path}countrywise_data//result_country_movie_df")
     result_country_tvshow_df.repartition(1).write.option("header", "true").mode("overwrite") \
         .csv(f"{write_path}countrywise_data//result_country_tvshow_df")
+
 
 
 
