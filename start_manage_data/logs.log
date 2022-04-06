@@ -1,0 +1,14 @@
+2022-04-06 17:26:18,636 | INFO | File reading...
+2022-04-06 17:26:23,680 | INFO | Data cleaning done...
+2022-04-06 17:26:23,848 | INFO | Data ready for transformation...
+2022-04-06 17:26:25,219 | INFO | Country data transformation: 
+2022-04-06 17:26:25,219 | INFO | 1. Get total count and percentages for each country: 
+2022-04-06 17:26:25,219 | INFO | 2. Get total count and percentage of Movies for each country: 
+2022-04-06 17:26:25,219 | INFO | 3. Get total count and percentage of TV Shows for each country: 
+2022-04-06 17:26:32,398 | INFO | Rating data transformation: 
+2022-04-06 17:26:32,398 | INFO | 1. Get count for each rating worldwide: 
+2022-04-06 17:26:32,398 | INFO | 2. Get count for each rating United States: 
+2022-04-06 17:26:32,398 | INFO | 3. Get count for each rating India: 
+2022-04-06 17:26:43,946 | INFO | Duration data transformation: 
+2022-04-06 17:26:43,946 | INFO | 1. Get average Movie duration per country: 
+2022-04-06 17:26:43,947 | INFO | 2. Get Total count of TV Shows for each season duration: 

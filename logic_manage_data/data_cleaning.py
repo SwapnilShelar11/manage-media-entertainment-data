@@ -4,6 +4,8 @@ Data Cleaning:
 *Convert string datatype to respective datatype of column
 *find all Null values and convert them into useful data
 """
+import logging
+
 from pyspark.sql.functions import col, coalesce, lit, to_date
 def dataframe_cleaning(netflix_df):
     """
@@ -11,6 +13,7 @@ def dataframe_cleaning(netflix_df):
     :param netflix_df:
     :return: cleaned data
     """
+    logging.info("Data cleaning done...")
     return netflix_df.select(col("show_id"), col("type"), col("title"),
               coalesce(col("director"), lit("No Data")).alias("director"),
               coalesce(col("cast"), lit("No Data")).alias("cast"),

@@ -8,8 +8,11 @@ Usecase:
    2.Get total count and percentage of Movies for each country 
    3.Get total count and percentage of TV Shows for each country 
 """
-from pyspark.sql.functions import col, split ,round
+import sys
 
+from pyspark.sql.functions import col, split ,round
+import logging
+#logging.basicConfig(level=logging.INFO)
 def country_data_manage(netflix_df,write_path):
     """
     :param netflix_df:
@@ -31,9 +34,14 @@ def country_data_manage(netflix_df,write_path):
         .withColumn("percentage", round((col("count") / netflix_df.count()) * 100, 2)) \
         .orderBy(col("count").desc()).limit(10)
 
+    logging.info("Country data transformation: ")
+    logging.info("1. Get total count and percentages for each country: ")
+    logging.info("2. Get total count and percentage of Movies for each country: ")
+    logging.info("3. Get total count and percentage of TV Shows for each country: ")
     result_country_df.show()
     result_country_movie_df.show()
     result_country_tvshow_df.show()
+
 
     result_country_df.repartition(1).write.option("header", "true").mode("overwrite") \
         .csv(f"{write_path}countrywise_data//result_country_df")

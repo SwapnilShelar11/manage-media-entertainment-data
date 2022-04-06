@@ -6,7 +6,7 @@ WRITE_PATH="C:\\Users\\Swapnil Shelar\\IdeaProjects\\pyspark_practice\\" \
            "managed-media-entertainment-data\\netflix_data\\write\\"
 def test_counterywise_data():
     """
-    Unit test for countrywise data
+    Unit test case for countrywise data
     :return: Result pass or fail
     """
     result_countrywise_data=spark.read.option("header", True) \
@@ -18,7 +18,7 @@ def test_counterywise_data():
 
 def test_duration_data():
     """
-    Unit test for duration data
+    Unit test case for duration data
     :return: Result pass or fail
     """
     result_duration_data = spark.read.option("header", True) \
@@ -30,7 +30,7 @@ def test_duration_data():
 
 def test_rating_data():
     """
-    Unit test for duration data
+    Unit test case for duration data
     :return: Result pass or fail
     """
     result_rating_data = spark.read.option("header", True) \

@@ -11,6 +11,8 @@ Usecase 2:
    Data should be sorted in descending order by count of TV Shows
    output should contain season duration and count of TV Shows
 """
+import logging
+
 from pyspark.sql.functions import col, avg, split, round
 
 def manage_duration_data(netflix_df,write_path):
@@ -29,6 +31,9 @@ def manage_duration_data(netflix_df,write_path):
     duration_tv_df=netflix_df.filter(col("type") == "TV Show").groupBy(col("duration")).count() \
         .orderBy(col("count").desc())
 
+    logging.info("Duration data transformation: ")
+    logging.info("1. Get average Movie duration per country: ")
+    logging.info("2. Get Total count of TV Shows for each season duration: ")
     duration_movie_data.show()
     duration_tv_df.show()
 

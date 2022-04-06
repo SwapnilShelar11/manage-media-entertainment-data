@@ -1,6 +1,8 @@
 """
 Read data from respective path
 """
+import logging
+
 from start_session import spark
 def read_data(file_format,read_path):
     """
@@ -9,6 +11,7 @@ def read_data(file_format,read_path):
     :param read_path:
     :return: Read data from respective path and file format
     """
+    logging.info("File reading...")
     spark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")
     return spark.read \
         .option("header", True) \
