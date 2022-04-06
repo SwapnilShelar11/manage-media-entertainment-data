@@ -1,10 +1,17 @@
+"""
+Read data from respective path
+"""
 from start_session import spark
-
-#read data from respective path
-def read_data(fileFormat,readPath):
+def read_data(file_format,read_path):
+    """
+    Read data
+    :param file_format:
+    :param read_path:
+    :return: Read data from respective path and file format
+    """
     spark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")
     return spark.read \
         .option("header", True) \
-        .format(fileFormat) \
+        .format(file_format) \
         .option("inferSchema", True) \
-        .load(readPath)
+        .load(read_path)
