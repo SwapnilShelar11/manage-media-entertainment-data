@@ -11,7 +11,8 @@ Usecase:
 import logging
 from pyspark.sql.functions import col
 
-def rating_data_manage(netflix_df,write_path):
+
+def rating_data_manage(netflix_df, write_path):
     """
     Rating Data transformations
     :param netflix_df:
@@ -23,7 +24,7 @@ def rating_data_manage(netflix_df,write_path):
     rating_us_df = netflix_df.filter(col("country").like("United States")) \
         .groupBy(col("rating")).count() \
         .orderBy(col("count").desc())
-    rating_india_df=netflix_df.filter(col("country").like("India")) \
+    rating_india_df = netflix_df.filter(col("country").like("India")) \
         .groupBy(col("rating")).count() \
         .orderBy(col("count").desc())
 

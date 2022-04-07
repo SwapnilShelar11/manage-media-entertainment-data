@@ -2,9 +2,10 @@
 Read data from respective path
 """
 import logging
-
 from start_session import spark
-def read_data(file_format,read_path):
+
+
+def read_data(file_format, read_path):
     """
     Read data
     :param file_format:
