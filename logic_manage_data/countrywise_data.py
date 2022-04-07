@@ -24,7 +24,7 @@ def country_data_manage(netflix_df,write_path):
         .withColumn("percentage", round((col("count") / netflix_df.count()) * 100, 2)) \
         .orderBy(col("count").desc()).limit(10)
 
-    result_country_movie_df=netflix_df.filter(col("type").like("Movie")) \
+    result_country_movie_df=netflix_df.filter((col("type").like("Movie"))) \
         .groupBy(split(col("country"), ",")[0].alias("country_name"), col("type")).count() \
         .withColumn("percentage", round((col("count") / netflix_df.count()) * 100, 2)) \
         .orderBy(col("count").desc()).limit(10)

@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 import configparser
 import os
-from pyspark.sql.functions import col, to_date, coalesce, lit
+from pyspark.sql.functions import col
 
 spark=SparkSession.builder.master("local").getOrCreate()
 
@@ -14,9 +14,6 @@ df=spark.read\
     .format(fileFormat) \
     .option("inferSchema",True)\
     .load("C:\\Users\\Swapnil Shelar\\IdeaProjects\\spark-java\\Hello-word\\netflix_titles.csv")
-#df.select(to_date(col("date_added"),"MMMM dd, yyyy")).show()
-#df.select(list("listed_in")[0])
-#df.filter(col("type")=="TV Show").show()
 
 cdf=df.filter(~col("rating").isin("November 1, 2020","2019","2017","Adriane Lenox",
                              "Richard Pepple%","Shavidee Trotter","Jowharah Jones%","2006","84 min","Itziar Aizpuru","Heather McDonald",
