@@ -2,20 +2,26 @@
 Read data from respective path
 """
 import logging
+
 from start_session import spark
 
+def read_data(data_base, table_name,user,password):
+    """
+    Connect and Read data from MySQL database
+    :param data_base:
+    :param table_name:
+    :param user:
+    :param password:
+    :return: read data from MySQL database - table
+    """
 
-def read_data(file_format, read_path):
-    """
-    Read data
-    :param file_format:
-    :param read_path:
-    :return: Read data from respective path and file format
-    """
     logging.info("File reading...")
     spark.sql("set spark.sql.legacy.timeParserPolicy=LEGACY")
     return spark.read \
-        .option("header", True) \
-        .format(file_format) \
-        .option("inferSchema", True) \
-        .load(read_path)
+         .format("jdbc") \
+         .option("url", f"jdbc:mysql://localhost:3306/{data_base}") \
+         .option("driver", "com.mysql.jdbc.Driver") \
+         .option("dbtable", table_name) \
+         .option("user", user) \
+         .option("password", password) \
+         .load()
